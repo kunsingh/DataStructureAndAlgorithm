@@ -37,10 +37,9 @@ public class BinarySearchTree {
             }
         }
     }
-    
-    public int findKthSmallest(int k){
-        
-        
+
+    public int findKthSmallest(int k) {
+
         return -1;
     }
 
@@ -73,8 +72,8 @@ public class BinarySearchTree {
             } else {
                 parent.right = null;
             }
-        }// CASE-2: One child- point the deleted node parent to the child of
-         // deleted node.
+        } // CASE-2: One child- point the deleted node parent to the child of
+          // deleted node.
         else if (curr.right == null) { // One child - left
             if (curr == root) {
                 root = curr.left;
@@ -225,19 +224,19 @@ public class BinarySearchTree {
         Node prev = null;
         while (!stack.isEmpty()) {
             currNode = stack.peek();
-            //go down to the tree 
+            // go down to the tree
             if (prev == null || prev.left == currNode || prev.right == currNode) {
                 if (currNode.left != null)
                     stack.push(currNode.left);
                 else if (currNode.right != null)
                     stack.push(currNode.right);
                 else {
-                    //leaf node
+                    // leaf node
                     System.out.print(currNode.value + " ");
                     stack.pop();
                 }
             }
-            //going up to the tree
+            // going up to the tree
             if (currNode.left == prev) {
                 if (currNode.right != null)
                     stack.push(currNode.right);
@@ -246,7 +245,7 @@ public class BinarySearchTree {
                     stack.pop();
                 }
             }
-            //moving up from right
+            // moving up from right
             if (currNode.right == prev) {
                 System.out.print(currNode.value + " ");
                 stack.pop();
@@ -274,6 +273,7 @@ public class BinarySearchTree {
         }
         System.out.println();
     }
+
     public boolean levelOrderSearch(int value) {
         Queue<Node> queue = new LinkedList<>();
         if (root == null) {
@@ -408,6 +408,16 @@ public class BinarySearchTree {
         return true;
     }
 
+    public boolean isBSTRec(final Node root, int min, int max) {
+        if (root == null) {
+            return true;
+        }
+        if (root.value <= min || root.value > max) {
+            return false;
+        }
+        return isBSTRec(root.left, min, root.value) && isBSTRec(root.right, root.value, max);
+    }
+
     public void findBSST() {
         findBSSti(root);
     }
@@ -485,19 +495,21 @@ public class BinarySearchTree {
         tree.add(node11);
         Node root = tree.root;
         tree.displayTree(root);
-//        tree.deleteNode(5);
+        
+        System.out.println("Is BST::: "+ tree.isBSTRec(root, Integer.MIN_VALUE, Integer.MAX_VALUE));
+        // tree.deleteNode(5);
         tree.displayTree(tree.root);
-         tree.postOrderTraversalOfTree();
+        tree.postOrderTraversalOfTree();
         // tree.inOrderTraversalOfTree();
         // tree.postOrderTraversalOfTree();
         // System.out.println(tree.levelOrderSearch(15));
-        System.out.println("SIZE:::  "+tree.sizeOfBinaryTree(tree.root));
+        System.out.println("SIZE:::  " + tree.sizeOfBinaryTree(tree.root));
         // Node mirrorRoot = tree.mirrorOfBinaryTree(tree.root);
         // tree.displayTree(tree.root);
         // tree.displayTree(mirrorRoot);
         // System.out.println(tree.isMirror(root, mirrorRoot));
-         System.out.println("HEIGHT:::: "+tree.findHeight());
-         System.out.println(">>>>:::: "+tree.findLowestCommonAccestor(new Node(8), new Node(11)).value);
+        System.out.println("HEIGHT:::: " + tree.findHeight());
+        System.out.println(">>>>:::: " + tree.findLowestCommonAccestor(new Node(8), new Node(11)).value);
         // System.out.println(tree.isBST(tree.root));
 
         System.out.println(tree.findBSSti(tree.root));

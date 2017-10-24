@@ -12,14 +12,15 @@ public class MinimumCoinChange {
     public static int getChange(int coins[], int amount) {
         int[] F = new int[amount + 1]; // table to fill minimum number of coins
         F[0] = 0;
-        for (int i = 1; i <= amount; i++) {
+        
+        for (int amt = 1; amt <= amount; amt++) {
             int min = Integer.MAX_VALUE;
             int j = 0;
-            while (j < coins.length && i >= coins[j]) {
-                min = minimum(F[i - coins[j]], min);
+            while (j < coins.length && amt >= coins[j]) {
+                min = minimum(F[amt - coins[j]], min);
                 j++;
             }
-            F[i] = min + 1;// add 1 coins
+            F[amt] = min + 1;// add 1 coins
         }
         return F[amount];
     }
@@ -30,6 +31,6 @@ public class MinimumCoinChange {
 
     public static void main(String[] args) {
         int[] A = { 1, 2, 3 };
-        System.out.println(getChange(A, 4));
+        System.out.println(getChange(A, 10));
     }
 }
