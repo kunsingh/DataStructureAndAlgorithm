@@ -1,2 +1,2 @@
 # DataStructureAndAlgorithm
-Practice Problem related to DataStructure and Algorithms
+Practice Problems related to DataStructure and Algorithms
