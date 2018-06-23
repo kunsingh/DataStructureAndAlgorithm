@@ -1,4 +1,4 @@
-package com.test.graph;
+package com.test.graph.bfs;
 
 import java.util.LinkedList;
 import java.util.Queue;

@@ -1,27 +1,34 @@
-package com.test.graph;
+package com.test.cycle;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by kunal on 06/11/17.
- */
 public class Vertex {
 
-    private int data;
+    private String data;
     private boolean visited;
+    private boolean beingVisited;
     private List<Vertex> neighbourList;
 
-    public Vertex(final int data) {
+    public Vertex(final String data) {
         this.data = data;
         this.neighbourList = new ArrayList<>();
     }
+    
+    public void addNeighbour(final Vertex vertex) {
+        this.neighbourList.add(vertex);
+    }
 
-    public int getData() {
+    @Override
+    public String toString() {
+        return this.data;
+    }
+
+    public String getData() {
         return data;
     }
 
-    public void setData(int data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -41,12 +48,12 @@ public class Vertex {
         this.neighbourList = neighbourList;
     }
 
-    public void addNeighbourList(final Vertex vertex) {
-        this.neighbourList.add(vertex);
+    public boolean isBeingVisited() {
+        return beingVisited;
     }
 
-    @Override
-    public String toString() {
-        return "" + this.data;
+    public void setBeingVisited(boolean beingVisited) {
+        this.beingVisited = beingVisited;
     }
+    
 }

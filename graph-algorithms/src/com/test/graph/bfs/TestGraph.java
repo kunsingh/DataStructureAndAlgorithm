@@ -1,4 +1,4 @@
-package com.test.graph;
+package com.test.graph.bfs;
 
 /**
  * Created by kunal on 06/11/17.
@@ -18,13 +18,13 @@ E->B, D
         Vertex D = new Vertex(4);
         Vertex E = new Vertex(5);
         
-        A.addNeighbourList(D);
-        A.addNeighbourList(C);
-        B.addNeighbourList(D);
-        C.addNeighbourList(B);
-        C.addNeighbourList(E);
-        E.addNeighbourList(B);
-        E.addNeighbourList(D);
+        A.addNeighbour(D);
+        A.addNeighbour(C);
+        B.addNeighbour(D);
+        C.addNeighbour(B);
+        C.addNeighbour(E);
+        E.addNeighbour(B);
+        E.addNeighbour(D);
         
         BFS bfs = new BFS();
         bfs.bfs(A);
